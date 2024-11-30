@@ -28,7 +28,7 @@
             <!-- Progress Bar -->
             <div class="swiper-pagination"></div>
 
-          
+
 
             <!-- Scroll Down Button -->
             <div class="scroll-down-btn">
@@ -43,8 +43,7 @@
 
 <!-- Content After Slider -->
 <div id="content" class="max-w-7xl px-4 lg:px-6 lg:px-8 py-3 mx-auto">
-    <video class="w-full object-cover" style="height:300px" src="https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
-        muted autoplay></video>
+    
 </div>
 
 <!-- Include Swiper.js Script -->
