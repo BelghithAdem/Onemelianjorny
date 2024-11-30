@@ -1,10 +1,6 @@
    <!-- Contact -->
    <div class="max-w-7xl px-4 lg:px-6 lg:px-8 py-4 lg:py-4 mx-auto">
-       <div class="mb-6 sm:mb-10 max-w-2xl text-center mx-auto">
-           <h2 class="font-medium text-black text-2xl sm:text-4xl dark:text-white">
-               Contacts
-           </h2>
-       </div>
+       
 
        <div class="grid grid-cols-1 lg:grid-cols-2 lg:items-center gap-6 md:gap-8 lg:gap-12">
            <div class="aspect-w-16 aspect-h-6 lg:aspect-h-14 overflow-hidden bg-gray-100 rounded-2xl dark:text-white">

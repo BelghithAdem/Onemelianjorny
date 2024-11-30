@@ -64,7 +64,7 @@
     <main id="content">
         @include('partials.heroCarousel')
 
-        @include('partials.project', ['products' => $products])
+      
         @include('partials.partner', ['partners' => $partners])
         @include('partials.contact')
     </main>
