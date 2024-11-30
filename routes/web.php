@@ -1,52 +1,90 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RequestController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PartnerController;
+use App\Models\Partner; // Ensure you have a Partner model
+use App\Models\Roles; // Ensure you have a Partner model
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
+
+use App\Models\Product;
+use Illuminate\Http\Request;  // Make sure to import the Request class
+
+
+
+
+Route::get('/users', function () {
+    return view('dashboard.users');
+})->middleware(['auth', 'verified'])->name('users');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+Route::resource('productDashboard', ProductController::class);
+
+Route::resource('requests', RequestController::class);
+
+Route::resource('roles', RolesController::class);
+
+Route::resource('users', UsersController::class);
+
+Route::resource('parthner', PartnerController::class);
+
 });
 
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\UserProfileController;
-use App\Http\Controllers\ResetPassword;
-use App\Http\Controllers\ChangePassword;
-use App\Http\Controllers\LandingController;
 
 
-Route::get('/', function () {return redirect('/dashboard');})->middleware('auth');
-	Route::get('/register', [RegisterController::class, 'create'])->middleware('guest')->name('register');
-	Route::post('/register', [RegisterController::class, 'store'])->middleware('guest')->name('register.perform');
-	Route::get('/login', [LoginController::class, 'show'])->middleware('guest')->name('login');
-	Route::post('/login', [LoginController::class, 'login'])->middleware('guest')->name('login.perform');
-	Route::get('/reset-password', [ResetPassword::class, 'show'])->middleware('guest')->name('reset-password');
-	Route::post('/reset-password', [ResetPassword::class, 'send'])->middleware('guest')->name('reset.perform');
-	Route::get('/change-password', [ChangePassword::class, 'show'])->middleware('guest')->name('change-password');
-	Route::post('/change-password', [ChangePassword::class, 'update'])->middleware('guest')->name('change.perform');
-	Route::get('/', [LandingController::class, 'index'])->name('landing')->middleware('guest');
-
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('home')->middleware('auth');
-Route::group(['middleware' => 'auth'], function () {
-	Route::get('/virtual-reality', [PageController::class, 'vr'])->name('virtual-reality');
-	Route::get('/rtl', [PageController::class, 'rtl'])->name('rtl');
-	Route::get('/profile', [UserProfileController::class, 'show'])->name('profile');
-	Route::post('/profile', [UserProfileController::class, 'update'])->name('profile.update');
-	Route::get('/profile-static', [PageController::class, 'profile'])->name('profile-static');
-	Route::get('/sign-in-static', [PageController::class, 'signin'])->name('sign-in-static');
-	Route::get('/sign-up-static', [PageController::class, 'signup'])->name('sign-up-static');
-	Route::get('/{page}', [PageController::class, 'index'])->name('page');
-	Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/', function (Request $request) {
+    $products = Product::paginate(3); // Retrieves 3 products per page
+    $partners =Partner::all();
+    return view('landing',compact("products","partners"));
 });
+Route::get('/dashboard', function (Request $request) {
+    $query = Roles::query();
+
+    if ($request->search) {
+        $query->where('name', 'like', '%' . $request->search . '%');
+    }
+
+    $roles = $query->paginate(10);
+
+    return view('dashboard.roles', compact('roles'));
+
+});
+
+Route::get('/about-us', function () {
+    return view('aboutUs');
+});
+Route::get('/contact-us', function () {
+    return view('contactUs');
+});
+Route::get('/products', function (Request $request) {
+    $query = Product::query();
+
+    if ($request->search) {
+        $query->where('name', 'like', '%' . $request->search . '%');
+    }
+
+    $products = $query->paginate(10);
+    return view('product', compact('products'));
+});
+Route::get('/demande-avis', function (Request $request) {
+    $products = Product::all();
+    return view('requestAvis',compact("products"));
+});
+
+
+
+
+
+
+
+
+require __DIR__.'/auth.php';
