@@ -96,7 +96,7 @@
                 @if (isset($request))
                     @method('PUT')
                 @endif
-                <div class="grid grid-cols-3 gap-4 sm:grid-cols-1">
+                <div class="grid md:grid-cols-3 gap-4 sm:grid-cols-1">
                     <!-- nom-->
                     <div class="mb-4">
 

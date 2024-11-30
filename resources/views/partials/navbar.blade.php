@@ -80,7 +80,11 @@
         {{ Request::is('about-us') ? 'before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-lime-400' : '' }}"
                         href="/about-us">A propos</a>
                 </div>
-
+  <div>
+                    <a class="relative inline-block text-black dark:text-white
+        {{ Request::is('contact-us') ? 'before:absolute before:bottom-0.5 before:start-0 before:-z-[1] before:w-full before:h-1 before:bg-lime-400' : '' }}"
+                        href="/contact-us">Contact</a>
+                </div>
 
             </div>
         </div>

@@ -9,6 +9,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\PartnerController;
 use App\Models\Partner; // Ensure you have a Partner model
 use App\Models\Roles; // Ensure you have a Partner model
+use App\Http\Controllers\ContactController;
 
 
 
@@ -36,7 +37,7 @@ Route::resource('roles', RolesController::class);
 Route::resource('users', UsersController::class);
 
 Route::resource('parthner', PartnerController::class);
-
+Route::resource('contact', ContactController::class);
 });
 
 
@@ -81,6 +82,7 @@ Route::get('/demande-avis', function (Request $request) {
 });
 
 
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 
 
