@@ -5,47 +5,20 @@
            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                <!-- Card -->
                <div
-                   class="flex flex-col bg-white border shadow-sm rounded-xl">
+                   class="flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                    <div class="p-4 md:p-5">
                        <div class="flex items-center gap-x-2">
-                           <p class="text-xs uppercase tracking-wide text-gray-500">
-                               Total users
+                           <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-white">
+                               Total Utulisateur
                            </p>
-                           <div class="hs-tooltip">
-                               <div class="hs-tooltip-toggle">
-                                   <svg class="shrink-0 size-4 text-gray-500"
-                                       xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                       viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                                       stroke-linecap="round" stroke-linejoin="round">
-                                       <circle cx="12" cy="12" r="10" />
-                                       <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-                                       <path d="M12 17h.01" />
-                                   </svg>
-                                   <span
-                                       class="hs-tooltip-content hs-tooltip-shown:opacity-100 hs-tooltip-shown:visible opacity-0 transition-opacity inline-block absolute invisible z-10 py-1 px-2 bg-gray-900 text-xs font-medium text-white rounded shadow-sm"
-                                       role="tooltip">
-                                       The number of daily users
-                                   </span>
-                               </div>
-                           </div>
+
                        </div>
 
                        <div class="mt-1 flex items-center gap-x-2">
-                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800">
-                               72,540
+                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-white">
+                               {{ $totalUsers }}
                            </h3>
-                           <span class="flex items-center gap-x-1 text-green-600">
-                               <svg class="inline-block size-4 self-center" xmlns="http://www.w3.org/2000/svg"
-                                   width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                   stroke-linejoin="round">
-                                   <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
-                                   <polyline points="16 7 22 7 22 13" />
-                               </svg>
-                               <span class="inline-block text-sm">
-                                   1.7%
-                               </span>
-                           </span>
+
                        </div>
                    </div>
                </div>
@@ -53,17 +26,17 @@
 
                <!-- Card -->
                <div
-                   class="flex flex-col bg-white border shadow-sm rounded-xl">
+                   class="flex flex-col bg-white border shadow-sm rounded-xl  dark:bg-neutral-800 dark:border-neutral-700">
                    <div class="p-4 md:p-5">
                        <div class="flex items-center gap-x-2">
-                           <p class="text-xs uppercase tracking-wide text-gray-500">
-                               Sessions
+                           <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-white">
+                               Nombre de demande
                            </p>
                        </div>
 
                        <div class="mt-1 flex items-center gap-x-2">
-                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800">
-                               29.4%
+                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-white">
+                               {{ $totalRequests }}
                            </h3>
                        </div>
                    </div>
@@ -72,30 +45,19 @@
 
                <!-- Card -->
                <div
-                   class="flex flex-col bg-white border shadow-sm rounded-xl">
+                   class="flex flex-col bg-white border shadow-sm rounded-xl  dark:bg-neutral-800 dark:border-neutral-700">
                    <div class="p-4 md:p-5">
                        <div class="flex items-center gap-x-2">
-                           <p class="text-xs uppercase tracking-wide text-gray-500">
-                               Avg. Click Rate
+                           <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-white">
+                               Nombre des contact
                            </p>
                        </div>
 
                        <div class="mt-1 flex items-center gap-x-2">
-                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800">
-                               56.8%
+                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-white">
+                               {{ $totalContacts }}
                            </h3>
-                           <span class="flex items-center gap-x-1 text-red-600">
-                               <svg class="inline-block size-4 self-center" xmlns="http://www.w3.org/2000/svg"
-                                   width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                   stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                   stroke-linejoin="round">
-                                   <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
-                                   <polyline points="16 17 22 17 22 11" />
-                               </svg>
-                               <span class="inline-block text-sm">
-                                   1.7%
-                               </span>
-                           </span>
+
                        </div>
                    </div>
                </div>
@@ -103,17 +65,17 @@
 
                <!-- Card -->
                <div
-                   class="flex flex-col bg-white border shadow-sm rounded-xl">
+                   class="flex flex-col bg-white border shadow-sm rounded-xl  dark:bg-neutral-800 dark:border-neutral-700">
                    <div class="p-4 md:p-5">
                        <div class="flex items-center gap-x-2">
-                           <p class="text-xs uppercase tracking-wide text-gray-500">
-                               Pageviews
+                           <p class="text-xs uppercase tracking-wide text-gray-500 dark:text-white">
+                               Nombre des produits
                            </p>
                        </div>
 
                        <div class="mt-1 flex items-center gap-x-2">
-                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800">
-                               92,913
+                           <h3 class="text-xl sm:text-2xl font-medium text-gray-800 dark:text-white">
+                               {{ $totalProducts }}
                            </h3>
                        </div>
                    </div>
@@ -125,67 +87,48 @@
            <div class="grid lg:grid-cols-2 gap-4 sm:gap-6">
                <!-- Card -->
                <div
-                   class="p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl">
+                   class="p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl  dark:bg-neutral-800 dark:border-neutral-700">
                    <!-- Header -->
                    <div class="flex justify-between items-center">
                        <div>
-                           <h2 class="text-sm text-gray-500">
-                               Income
+                           <h2 class="text-sm text-gray-500 dark:text-white">
+                               Demande De vis
                            </h2>
-                           <p class="text-xl sm:text-2xl font-medium text-gray-800">
-                               $126,238.49
-                           </p>
+
                        </div>
 
                        <div>
-                           <span
-                               class="py-[5px] px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-md bg-teal-100 text-teal-800">
-                               <svg class="inline-block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                   height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                   <path d="M12 5v14" />
-                                   <path d="m19 12-7 7-7-7" />
-                               </svg>
-                               25%
-                           </span>
+
                        </div>
                    </div>
                    <!-- End Header -->
+                   <div class="dark:text-white">
 
-                   <div id="hs-multiple-bar-charts"></div>
+                       <div id="requestsChart" class="dark:text-white"></div>
+                   </div>
                </div>
                <!-- End Card -->
 
                <!-- Card -->
                <div
-                   class="p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl">
+                   class="p-4 md:p-5 min-h-[410px] flex flex-col bg-white border shadow-sm rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
                    <!-- Header -->
                    <div class="flex justify-between items-center">
                        <div>
-                           <h2 class="text-sm text-gray-500">
-                               Visitors
+                           <h2 class="text-sm text-gray-500 dark:text-white">
+                               Contact
                            </h2>
-                           <p class="text-xl sm:text-2xl font-medium text-gray-800">
-                               80.3k
-                           </p>
+
                        </div>
 
-                       <div>
-                           <span
-                               class="py-[5px] px-1.5 inline-flex items-center gap-x-1 text-xs font-medium rounded-md bg-red-100 text-red-800">
-                               <svg class="inline-block size-3.5" xmlns="http://www.w3.org/2000/svg" width="24"
-                                   height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                   stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                   <path d="M12 5v14" />
-                                   <path d="m19 12-7 7-7-7" />
-                               </svg>
-                               2%
-                           </span>
-                       </div>
+
                    </div>
                    <!-- End Header -->
+                   <div class="dark:text-white">
 
-                   <div id="hs-single-area-chart"></div>
+                       <div id="hs-single-area-chart"></div>
+
+                   </div>
                </div>
                <!-- End Card -->
            </div>
@@ -195,173 +138,97 @@
                <div class="-m-1.5 overflow-x-auto">
                    <div class="p-1.5 min-w-full inline-block align-middle">
                        <div
-                           class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden">
+                           class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-800 dark:border-neutral-700">
                            <!-- Header -->
                            <div
                                class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-b border-gray-200">
                                <div>
-                                   <h2 class="text-xl font-semibold text-gray-800">
-                                       Users
+                                   <h2 class="text-xl font-semibold text-gray-800 dark:text-white">
+                                       Produits avec demande de vis
                                    </h2>
-                                   <p class="text-sm text-gray-600">
-                                       Add users, edit and more.
-                                   </p>
+
                                </div>
 
-                               <div>
-                                   <div class="inline-flex gap-x-2">
-                                       <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50"
-                                           href="#">
-                                           View all
-                                       </a>
 
-                                       <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
-                                           href="#">
-                                           <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
-                                               width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                               stroke-linejoin="round">
-                                               <path d="M5 12h14" />
-                                               <path d="M12 5v14" />
-                                           </svg>
-                                           Add user
-                                       </a>
-                                   </div>
-                               </div>
                            </div>
                            <!-- End Header -->
 
                            <!-- Table -->
-                           <table class="min-w-full divide-y divide-gray-200">
-                               <thead class="bg-gray-50">
+                           <table class="min-w-full divide-y divide-gray-200 dark:text-white">
+                               <thead class="bg-gray-50 dark:bg-neutral-800 dark:border-neutral-700">
                                    <tr>
-                                       <th scope="col" class="ps-6 py-3 text-start">
-                                           <label for="hs-at-with-checkboxes-main" class="flex">
-                                               <input type="checkbox"
-                                                   class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                   id="hs-at-with-checkboxes-main">
-                                               <span class="sr-only">Checkbox</span>
-                                           </label>
-                                       </th>
 
                                        <th scope="col" class="ps-6 lg:ps-3 xl:ps-0 pe-6 py-3 text-start">
                                            <div class="flex items-center gap-x-2">
                                                <span
-                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                                                   Name
+                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-white">
+                                                   Image & Nom
                                                </span>
                                            </div>
                                        </th>
-
                                        <th scope="col" class="px-6 py-3 text-start">
                                            <div class="flex items-center gap-x-2">
                                                <span
-                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                                                   Position
+                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-white">
+                                                   Description
                                                </span>
                                            </div>
                                        </th>
-
                                        <th scope="col" class="px-6 py-3 text-start">
                                            <div class="flex items-center gap-x-2">
                                                <span
-                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                                                   Status
+                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800 dark:text-white">
+                                                   Demande de vis
                                                </span>
                                            </div>
                                        </th>
-
-                                       <th scope="col" class="px-6 py-3 text-start">
-                                           <div class="flex items-center gap-x-2">
-                                               <span
-                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                                                   Portfolio
-                                               </span>
-                                           </div>
+                                       <th scope="col" class="px-6 py-3 text-end">
+                                           <!-- Action column for actions like Delete -->
                                        </th>
-
-                                       <th scope="col" class="px-6 py-3 text-start">
-                                           <div class="flex items-center gap-x-2">
-                                               <span
-                                                   class="text-xs font-semibold uppercase tracking-wide text-gray-800">
-                                                   Created
-                                               </span>
-                                           </div>
-                                       </th>
-
-                                       <th scope="col" class="px-6 py-3 text-end"></th>
                                    </tr>
                                </thead>
 
                                <tbody class="divide-y divide-gray-200">
-                                   <tr>
-                                       <td class="size-px whitespace-nowrap">
-                                           <div class="ps-6 py-3">
-                                               <label for="hs-at-with-checkboxes-1" class="flex">
-                                                   <input type="checkbox"
-                                                       class="shrink-0 border-gray-300 rounded text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                                                       id="hs-at-with-checkboxes-1">
-                                                   <span class="sr-only">Checkbox</span>
-                                               </label>
-                                           </div>
-                                       </td>
-                                       <td
-                                           class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800">
-                                           John Brown</td>
-                                       <td
-                                           class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                           45</td>
-                                       <td
-                                           class="px-6 py-4 whitespace-nowrap text-sm text-gray-800">
-                                           New York No. 1 Lake Park</td>
-                                       <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                           <button type="button"
-                                               class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
-                                       </td>
-                                   </tr>
+                                   <!-- Loop through each product and its request count -->
+                                   @foreach ($topProductsWithDetails as $product)
+                                       <tr>
 
-
+                                           <td
+                                               class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-white">
+                                               <!-- Display product image and name -->
+                                               <div class="flex items-center">
+                                                   <img src="{{ asset('storage/' . $product->image) }}"
+                                                       alt="Product Image" class="w-8 h-8 mr-2 rounded-full">
+                                                   <span class="dark:text-white">{{ $product->name }}</span>
+                                               </div>
+                                           </td>
+                                           <td
+                                               class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-white">
+                                               <!-- Display product description -->
+                                               <p>{{ $product->description }}</p>
+                                           </td>
+                                           <td
+                                               class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-white">
+                                               <!-- Display request count -->
+                                               <span>{{ $product->request_count }}</span>
+                                           </td>
+                                           <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                               <!-- Action buttons like delete can go here -->
+                                               <a href="/viewproduct/{{ $product->id }}">
+                                                   <button type="button"
+                                                       class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 focus:outline-none focus:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">
+                                                       Voir Detail
+                                                   </button>
+                                               </a>
+                                           </td>
+                                       </tr>
+                                   @endforeach
                                </tbody>
                            </table>
+
                            <!-- End Table -->
 
-                           <!-- Footer -->
-                           <div
-                               class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center border-t border-gray-200">
-                               <div>
-                                   <p class="text-sm text-gray-600">
-                                       <span class="font-semibold text-gray-800">12</span>
-                                       results
-                                   </p>
-                               </div>
 
-                               <div>
-                                   <div class="inline-flex gap-x-2">
-                                       <button type="button"
-                                           class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50">
-                                           <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
-                                               width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                               stroke-linejoin="round">
-                                               <path d="m15 18-6-6 6-6" />
-                                           </svg>
-                                           Prev
-                                       </button>
-
-                                       <button type="button"
-                                           class="py-1.5 px-2 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-sm hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none focus:outline-none focus:bg-gray-50">
-                                           Next
-                                           <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"
-                                               width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                               stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                               stroke-linejoin="round">
-                                               <path d="m9 18 6-6-6-6" />
-                                           </svg>
-                                       </button>
-                                   </div>
-                               </div>
-                           </div>
-                           <!-- End Footer -->
                        </div>
                    </div>
                </div>

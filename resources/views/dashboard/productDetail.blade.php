@@ -172,7 +172,7 @@
                 </li>
                 <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate  dark:text-white"
                     aria-current="page">
-                    Ajouter/Modifier
+                    Detail de produit
                 </li>
             </ol>
             <!-- JS Implementing Plugins -->
@@ -181,132 +181,167 @@
 
 
         <div class=" p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
-                {{ isset($product) ? 'Modifier Produit' : 'Ajouter Produit' }}
-            </h2>
-            @if (session('success'))
-                <div class="bg-green-100 text-green-700 p-4 rounded-lg mb-4">
-                    {{ session('success') }}
+
+            <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
+
+                <!-- Product Name -->
+                <div class="mb-4">
+                    <label for="name" class="block text-sm font-medium text-gray-700 dark:text-white">Nom de
+                        produit</label>
+
+                    <input type="text" name="name" id="name"
+                        value="{{ old('name', $product->name ?? '') }}"
+                        class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
+                        placeholder="Nom de produit">
+
+                    @error('name')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
                 </div>
-            @endif
-            <form
-                action="{{ isset($product) ? route('productDashboard.update', $product->id) : route('productDashboard.store') }}"
-                method="POST" enctype="multipart/form-data">
-                @csrf
-                @if (isset($product))
-                    @method('PUT')
+
+                <!-- Quantity -->
+                <div class="mb-4">
+                    <label for="qty"
+                        class="block text-sm font-medium text-gray-700 dark:text-white">Quantite</label>
+                    <input type="number" name="qty" id="qty"
+                        value="{{ old('qty', $product->qty ?? '') }}"
+                        class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                    @error('qty')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+                </div>
+            </div>
+            <!-- Description -->
+            <div class="mb-4">
+                <label for="description"
+                    class="block text-sm font-medium text-gray-700 dark:text-white">Description</label>
+                <textarea name="description" id="description" rows="4"
+                    class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">{{ old('description', $product->description ?? '') }}</textarea>
+                @error('description')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
+            <!-- Image -->
+            <div class="mb-4">
+                <label for="image" class="block text-sm font-medium text-gray-700 dark:text-white">Image</label>
+
+
+                @if (isset($product) && $product->image)
+                    <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" class="mt-2 h-16">
                 @endif
-                <div class="grid md:grid-cols-2 sm:grid-cols-1 gap-4">
-                    <!-- Product Name -->
-                    <div class="mb-4">
-                        <label for="name" class="block text-sm font-medium text-gray-700 dark:text-white">Nom de
-                            produit</label>
+                @error('image')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
 
-                        <input type="text" name="name" id="name"
-                            value="{{ old('name', $product->name ?? '') }}"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
-                            placeholder="Nom de produit">
+            <!-- PDF -->
+            <div class="mb-4">
+                <label for="pdf" class="block text-sm font-medium text-gray-700 dark:text-white">televerser
+                    PDF</label>
 
-                        @error('name')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
+
+                @if (isset($product) && $product->pdf)
+                    <a href="{{ asset('storage/' . $product->pdf) }}" target="_blank"
+                        class="text-blue-500 underline mt-2">voir PDF</a>
+                @endif
+                @error('pdf')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
+
+
+            <!-- Video -->
+            <div class="mb-4">
+                <label for="video" class="block text-sm font-medium text-gray-700 dark:text-white">televerser
+                    Video</label>
+
+
+                @if (isset($product) && $product->video)
+                    <video class="mt-2 w-full" controls style="height:100px">
+                        <source src="{{ asset('storage/' . $product->video) }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                @endif
+                @error('video')
+                    <span class="text-red-500 text-sm">{{ $message }}</span>
+                @enderror
+            </div>
+
+
+
+        </div>
+
+        <div class="flex flex-col">
+            <div class="-m-1.5 overflow-x-auto">
+                <div class="p-1.5 min-w-full inline-block align-middle">
+                    <div class="overflow-hidden">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead>
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
+                                        Nom
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
+                                        Prenom
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
+                                        Telephone
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-white">
+                                        Email
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-white">
+                                        Methode livraison
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                @forelse ($requests as $request)
+                                    <tr>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-white">
+                                            {{ $request->nom }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-white">
+                                            {{ $request->prenom }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-white">
+                                            {{ $request->num_tel }}
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-end dark:text-white">
+                                            {{ $request->email }}
+                                        </td>
+                                        <td
+                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 text-end dark:text-white">
+                                            {{ $request->methode_livraison }}
+                                        </td>
+
+
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5"
+                                            class="px-6 py-4 text-center text-gray-500 dark:text-white">
+                                            Pas de Demande
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+
                     </div>
-
-
-                    <!-- Quantity -->
-                    <div class="mb-4">
-                        <label for="qty"
-                            class="block text-sm font-medium text-gray-700 dark:text-white">Quantite</label>
-                        <input type="number" name="qty" id="qty"
-                            value="{{ old('qty', $product->qty ?? '') }}"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
-                        @error('qty')
-                            <span class="text-red-500 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
                 </div>
-                <!-- Description -->
-                <div class="mb-4">
-                    <label for="description"
-                        class="block text-sm font-medium text-gray-700 dark:text-white">Description</label>
-                    <textarea name="description" id="description" rows="4"
-                        class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">{{ old('description', $product->description ?? '') }}</textarea>
-                    @error('description')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-                <!-- Image -->
-                <div class="mb-4">
-                    <label for="image"
-                        class="block text-sm font-medium text-gray-700 dark:text-white">Image</label>
-
-                    <input type="file" name="image" id="image"
-                        class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400
-    file:bg-gray-50 file:border-0
-    file:me-4
-    file:py-3 file:px-4
-    dark:file:bg-neutral-700 dark:file:text-neutral-400">
-
-                    @if (isset($product) && $product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="Product Image" class="mt-2 h-16">
-                    @endif
-                    @error('image')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <!-- PDF -->
-                <div class="mb-4">
-                    <label for="pdf" class="block text-sm font-medium text-gray-700 dark:text-white">televerser
-                        PDF</label>
-
-                    <input type="file" name="pdf" id="pdf"
-                        class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400
-    file:bg-gray-50 file:border-0
-    file:me-4
-    file:py-3 file:px-4
-    dark:file:bg-neutral-700 dark:file:text-neutral-400">
-                    @if (isset($product) && $product->pdf)
-                        <a href="{{ asset('storage/' . $product->pdf) }}" target="_blank"
-                            class="text-blue-500 underline mt-2">voir PDF</a>
-                    @endif
-                    @error('pdf')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
-
-
-                <!-- Video -->
-                <div class="mb-4">
-                    <label for="video" class="block text-sm font-medium text-gray-700 dark:text-white">televerser
-                        Video</label>
-
-                    <input type="file" name="video" id="video"
-                        class="block w-full border border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400
-    file:bg-gray-50 file:border-0
-    file:me-4
-    file:py-3 file:px-4
-    dark:file:bg-neutral-700 dark:file:text-neutral-400">
-                    @if (isset($product) && $product->video)
-                        <video class="mt-2 w-full" controls style="height:100px">
-                            <source src="{{ asset('storage/' . $product->video) }}" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    @endif
-                    @error('video')
-                        <span class="text-red-500 text-sm">{{ $message }}</span>
-                    @enderror
-                </div>
-
-                <!-- Submit Button -->
-                <div class="mt-6">
-                    <button type="submit"
-                        class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700">
-                        {{ isset($product) ? 'Modifier Produit' : 'Ajouter Produit' }}
-                    </button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
 

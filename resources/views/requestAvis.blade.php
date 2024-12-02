@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Creative Agency Demo Template Tailwind CSS | Preline UI</title>
+    <title>Eco plast</title>
     <link rel="stylesheet" href="https://preline.co/assets/css/main.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="https://preline.co/favicon.ico">
+   
     <style>
         .theme-toggle {
             position: fixed;
@@ -63,7 +63,7 @@
 
     <main id="content ">
         <!-- breadcumb -->
-        <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 lg:py-4 mx-auto">
 
             <ol class="flex items-center whitespace-nowrap sm:px-6 lg:px-8 px-4 ">
                 <li class="inline-flex items-center">
@@ -91,10 +91,15 @@
             </ol>
         </div>
         <!-- End Breadcumb -->
-        <div class="max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 mx-auto">
+        <div class="max-w-[85rem] px-4 py-4 sm:px-6 lg:px-8 lg:py-4 mx-auto">
 
-            <form action="{{ isset($request) ? route('requests.update', $request->id) : route('requests.store') }}"
-                method="POST">
+            @if (isset($success))
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg mb-4"
+                    role="alert">
+                    <strong>Success!</strong> {{ $success }}
+                </div>
+            @endif
+            <form action="/add-request" method="POST">
                 @csrf
                 @if (isset($request))
                     @method('PUT')
@@ -120,7 +125,8 @@
 
                     <!-- nom-->
                     <div class="mb-4">
-                        <label for="prenom" class="block text-sm font-medium text-gray-700 dark:text-white">Prenom
+                        <label for="prenom"
+                            class="mb-2 block text-sm font-medium text-gray-700 dark:text-white">Prenom
                         </label>
 
                         <input type="text" name="prenom" id="prenom"
@@ -135,7 +141,8 @@
 
                     <!-- num_tel-->
                     <div class="mb-4">
-                        <label for="num_tel" class="block text-sm font-medium text-gray-700 dark:text-white">Numero
+                        <label for="num_tel"
+                            class=" mb-2 block text-sm font-medium text-gray-700 dark:text-white">Numero
                             telephone
                         </label>
 
@@ -151,7 +158,7 @@
 
                     <!-- email-->
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="email" class="mb-2 block text-sm font-medium text-gray-700 dark:text-white">
                             Email
                         </label>
 
@@ -168,7 +175,8 @@
 
                     <!-- estimation_temps-->
                     <div class="mb-4">
-                        <label for="estimation_temps" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="estimation_temps"
+                            class="mb-2 block text-sm font-medium text-gray-700 dark:text-white">
                             Estimation temps
                         </label>
 
@@ -184,7 +192,7 @@
 
                     <!-- methode_livraison-->
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="email" class="mb-2 block text-sm font-medium text-gray-700 dark:text-white">
                             Methode livraison
                         </label>
                         <select name="methode_livraison" id="methode_livraison"
@@ -204,7 +212,7 @@
 
                     <!-- product-->
                     <div class="mb-4">
-                        <label for="produit_id" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="produit_id" class="mb-2 block text-sm font-medium text-gray-700 dark:text-white">
                             Produit
                         </label>
                         <select name="produit_id" id="produit_id"

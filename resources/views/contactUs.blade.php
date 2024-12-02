@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Creative Agency Demo Template Tailwind CSS | Preline UI</title>
+    <title>Eco plast</title>
     <link rel="stylesheet" href="https://preline.co/assets/css/main.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="https://preline.co/favicon.ico">
+
     <style>
         .theme-toggle {
             position: fixed;

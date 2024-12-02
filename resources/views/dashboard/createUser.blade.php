@@ -86,6 +86,11 @@
             <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
                 {{ isset($user) ? 'Modifier Utilisateur' : 'Ajouter Utilisateur' }}
             </h2>
+            @if (session('success'))
+                <div class="bg-green-100 text-green-700 p-4 rounded-lg mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
 
             <form action="{{ isset($user) ? route('users.update', $user->id) : route('users.store') }}" method="POST">
                 @csrf

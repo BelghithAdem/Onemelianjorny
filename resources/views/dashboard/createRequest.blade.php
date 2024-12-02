@@ -13,7 +13,7 @@
     <meta name="twitter:site" content="@preline">
     <meta name="twitter:creator" content="@preline">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta name="twitter:title" content="Eco plast">
     <meta name="twitter:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta name="twitter:image" content="https://preline.co/assets/img/og-image.png">
@@ -22,13 +22,13 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Preline">
-    <meta property="og:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta property="og:title" content="Eco plast">
     <meta property="og:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
 
     <!-- Title -->
-    <title>Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS</title>
+    <title>Eco plast</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -142,7 +142,7 @@
         <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
             <ol class="flex items-center whitespace-nowrap">
                 <li class="inline-flex items-center">
-                    <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                    <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-white"
                         href="/">
                         <svg class="shrink-0 me-3 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
                             height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -152,25 +152,26 @@
                         </svg>
                         Dashboard
                     </a>
-                    <svg class="shrink-0 mx-2 size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="shrink-0 mx-2 size-4 text-gray-400 dark:text-white" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m9 18 6-6-6-6"></path>
                     </svg>
                 </li>
 
                 <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
-                    <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600"
+                    <a class="flex items-center text-sm text-gray-500 hover:text-blue-600 focus:outline-none focus:text-blue-600 dark:text-white"
                         href="/requests">
                         Demande de Vis
                     </a>
-                    <svg class="shrink-0 mx-2 size-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="shrink-0 mx-2 size-4 text-gray-400 dark:text-white" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m9 18 6-6-6-6"></path>
                     </svg>
                 </li>
-                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate" aria-current="page">
+                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-white"
+                    aria-current="page">
                     Ajouter/Modifier
                 </li>
             </ol>
@@ -180,17 +181,21 @@
 
 
         <div class=" p-6 rounded-lg shadow-md">
-            <h2 class="text-2xl font-semibold text-gray-800">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
                 {{ isset($request) ? 'Modifie la demande de vis' : 'Ajouter demande de vis' }}
             </h2>
-
+            @if (session('success'))
+                <div class="bg-green-100 text-green-700 p-4 rounded-lg mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
             <form action="{{ isset($request) ? route('requests.update', $request->id) : route('requests.store') }}"
                 method="POST">
                 @csrf
                 @if (isset($request))
                     @method('PUT')
                 @endif
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid md:grid-cols-3 sm:grid-cols-1 gap-4">
                     <!-- nom-->
                     <div class="mb-4">
 
@@ -199,7 +204,7 @@
 
                         <input type="text" name="nom" id="nom"
                             value="{{ old('nom', $request->nom ?? '') }}"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="Nom">
 
                         @error('nom')
@@ -211,12 +216,13 @@
 
                     <!-- nom-->
                     <div class="mb-4">
-                        <label for="prenom" class="block text-sm font-medium text-gray-700 dark:text-white">Prenom
+                        <label for="prenom"
+                            class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">Prenom
                         </label>
 
                         <input type="text" name="prenom" id="prenom"
                             value="{{ old('prenom', $request->prenom ?? '') }}"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="Prenom">
 
                         @error('prenom')
@@ -226,13 +232,14 @@
 
                     <!-- num_tel-->
                     <div class="mb-4">
-                        <label for="num_tel" class="block text-sm font-medium text-gray-700 dark:text-white">Numero
+                        <label for="num_tel"
+                            class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">Numero
                             telephone
                         </label>
 
                         <input type="tel" name="num_tel" id="num_tel"
                             value="{{ old('num_tel', $request->num_tel ?? '') }}"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="Numero telephone">
 
                         @error('num_tel')
@@ -242,13 +249,13 @@
 
                     <!-- email-->
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="email" class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
                             Email
                         </label>
 
                         <input type="email" name="email" id="email"
                             value="{{ old('email', $request->email ?? '') }}"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="Email">
 
                         @error('email')
@@ -259,13 +266,14 @@
 
                     <!-- estimation_temps-->
                     <div class="mb-4">
-                        <label for="estimation_temps" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="estimation_temps"
+                            class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
                             Estimation temps
                         </label>
 
                         <input type="text" name="estimation_temps" id="estimation_temps"
                             value="{{ old('estimation_temps', $request->estimation_temps ?? '') }}"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
+                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                             placeholder="Estimation temps">
 
                         @error('estimation_temps')
@@ -275,11 +283,11 @@
 
                     <!-- methode_livraison-->
                     <div class="mb-4">
-                        <label for="email" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="email" class="block  mb-2 text-sm font-medium text-gray-700 dark:text-white">
                             Methode livraison
                         </label>
                         <select name="methode_livraison" id="methode_livraison"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
 
                             <option value="1" {{ old('methode_livraison') == '1' ? 'selected' : '' }}>1</option>
                             <option value="2" {{ old('methode_livraison') == '2' ? 'selected' : '' }}>2</option>
@@ -296,11 +304,11 @@
 
                     <!-- product-->
                     <div class="mb-4">
-                        <label for="produit_id" class="block text-sm font-medium text-gray-700 dark:text-white">
+                        <label for="produit_id" class="block mb-2 text-sm font-medium text-gray-700 dark:text-white">
                             Produit
                         </label>
                         <select name="produit_id" id="produit_id"
-                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
+                            class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
 
 
                             @foreach ($products as $product)

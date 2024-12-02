@@ -13,7 +13,7 @@
     <meta name="twitter:site" content="@preline">
     <meta name="twitter:creator" content="@preline">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta name="twitter:title" content="Eco plast">
     <meta name="twitter:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta name="twitter:image" content="https://preline.co/assets/img/og-image.png">
@@ -22,13 +22,13 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Preline">
-    <meta property="og:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta property="og:title" content="Eco plast">
     <meta property="og:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
 
     <!-- Title -->
-    <title>Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS</title>
+    <title>Eco plast</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -157,6 +157,11 @@
         </div>
 
         <div class="p-6 rounded-lg shadow-md">
+            @if (session('success'))
+                <div class="bg-green-100 text-green-700 p-4 rounded-lg mb-4">
+                    {{ session('success') }}
+                </div>
+            @endif
             <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
                 {{ isset($product) ? 'Modifier parthenaire' : 'Ajouter parthenaire' }}
             </h2>
@@ -171,7 +176,8 @@
                 <div class="mb-4">
                     <label for="name" class="block text-sm font-medium text-gray-700 dark:text-white">Nom de
                         parthenaire</label>
-                    <input type="text" name="name" id="name" value="{{ old('name', $product->name ?? '') }}"
+                    <input type="text" name="name" id="name"
+                        value="{{ old('name', $product->name ?? '') }}"
                         class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600"
                         placeholder="Nom de parthenaire">
                     @error('name')

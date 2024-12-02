@@ -13,7 +13,7 @@
     <meta name="twitter:site" content="@preline">
     <meta name="twitter:creator" content="@preline">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta name="twitter:title" content="Eco plast">
     <meta name="twitter:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta name="twitter:image" content="https://preline.co/assets/img/og-image.png">
@@ -22,13 +22,13 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Preline">
-    <meta property="og:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta property="og:title" content="Eco plast">
     <meta property="og:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
 
     <!-- Title -->
-    <title>Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS</title>
+    <title>Eco plast</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -125,7 +125,7 @@
     @include('partialDashboard.sidebar')
     <div class="w-full lg:ps-64 bg-white dark:bg-neutral-900">
         <div class="p-4 sm:p-6 space-y-4 sm:space-y-6">
-     
+
             <!-- JS Implementing Plugins -->
         </div>
 
@@ -185,6 +185,7 @@
                                         Utilisateur
                                     </h2>
 
+
                                     <p class="text-sm text-gray-600 dark:text-white">
                                         Ajouter un utilisateur
                                     </p>
@@ -192,6 +193,16 @@
 
                                 <div>
                                     <div class="inline-flex gap-x-2">
+
+                                        <a href="/users-export/export-excel"
+                                            class="inline-block px-4 py-2 text-sm font-semibold rounded bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-2"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M8 17l4 4m0 0l4-4m-4 4V3" />
+                                            </svg>
+                                            <span>Exporter en csv</span>
+                                        </a>
                                         <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none"
                                             href="{{ route('users.create') }}">
                                             <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg"

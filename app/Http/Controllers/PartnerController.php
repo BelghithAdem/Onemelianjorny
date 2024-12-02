@@ -31,6 +31,13 @@ class PartnerController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ], [
+            'name.required' => 'Le nom est obligatoire.',
+            'name.string' => 'Le nom doit être une chaîne de caractères.',
+            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+            'image.image' => 'Le fichier doit être une image.',
+            'image.mimes' => 'L\'image doit être au format jpeg, png ou jpg.',
+            'image.max' => 'L\'image ne doit pas dépasser 2048 kilo-octets.',
         ]);
 
         if ($request->hasFile('image')) {
@@ -56,6 +63,13 @@ class PartnerController extends Controller
         $data = $request->validate([
             'name' => 'required|string|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ], [
+            'name.required' => 'Le nom est obligatoire.',
+            'name.string' => 'Le nom doit être une chaîne de caractères.',
+            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+            'image.image' => 'Le fichier doit être une image.',
+            'image.mimes' => 'L\'image doit être au format jpeg, png ou jpg.',
+            'image.max' => 'L\'image ne doit pas dépasser 2048 kilo-octets.',
         ]);
 
         if ($request->hasFile('image')) {
@@ -102,4 +116,37 @@ class PartnerController extends Controller
 
         return response()->json(['message' => 'Partners deleted successfully.']);
     }
+
+    public function exportToExcel()
+    {
+        $products = Partner::all();
+
+        // Define the header for the CSV
+        $header = ['ID', 'Nom'];
+
+        // Open a file pointer for output
+        $fileName = 'parthnaire_export.csv';
+        $handle = fopen('php://output', 'w');
+
+        // Add the header to the CSV
+        fputcsv($handle, $header);
+
+        // Add rows for each product
+        foreach ($products as $product) {
+            fputcsv($handle, [
+                $product->id,
+                $product->name,
+
+            ]);
+        }
+
+        // Close the file pointer
+        fclose($handle);
+
+        // Return the file as a download
+        return response()->streamDownload(function () use ($handle) {
+            // Output the stream contents
+        }, $fileName, ['Content-Type' => 'text/csv']);
+    }
+
 }

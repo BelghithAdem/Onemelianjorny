@@ -4,10 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Creative Agency Demo Template Tailwind CSS | Preline UI</title>
+    <title>Eco plast</title>
     <link rel="stylesheet" href="https://preline.co/assets/css/main.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="https://preline.co/favicon.ico">
+
     <style>
         .theme-toggle {
             position: fixed;
@@ -84,7 +84,8 @@
                     </svg>
                 </li>
 
-                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-white" aria-current="page">
+                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-white"
+                    aria-current="page">
                     Produits
                 </li>
             </ol>
@@ -96,7 +97,7 @@
                 @foreach ($products as $product)
                     <!-- Card -->
                     <div class="group flex flex-col h-full border border-gray-200 hover:border-transparent hover:shadow-lg focus:outline-none focus:border-transparent focus:shadow-lg transition duration-300 rounded-xl p-5"
-                        href="#">
+                        onclick="window.location.href='/product-detail/' + {{ $product->id }}">
                         <div class="aspect-w-16 aspect-h-11">
                             <img class="w-full object-cover rounded-xl" src="{{ '/storage/' . $product->image }}"
                                 alt="Blog Image">
@@ -112,8 +113,10 @@
                         <div class="mt-auto flex items-center gap-x-3">
 
                             <div>
-                                <a href="{{ '/storage/' . $product->pdf }}" class="text-blue-600" target="_blank">View PDF</a>
-                                <a href="{{ '/storage/' . $product->video }}" class="text-blue-600 ml-3" target="_blank">Watch
+                                <a href="{{ '/storage/' . $product->pdf }}" class="text-blue-600" target="_blank">View
+                                    PDF</a>
+                                <a href="{{ '/storage/' . $product->video }}" class="text-blue-600 ml-3"
+                                    target="_blank">Watch
                                     Video</a>
 
                             </div>

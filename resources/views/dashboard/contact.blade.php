@@ -10,8 +10,7 @@
     <meta name="description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
 
-    <meta name="twitter:site" content="@preline">
-    <meta name="twitter:creator" content="@preline">
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
     <meta name="twitter:description"
@@ -22,13 +21,13 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Preline">
-    <meta property="og:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta property="og:title" content="Eco plast">
     <meta property="og:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
 
     <!-- Title -->
-    <title>Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS</title>
+    <title>Eco plast</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -175,8 +174,18 @@
                 <div class="p-1.5 min-w-full inline-block align-middle">
                     <div
                         class="bg-white border border-gray-200 rounded-xl shadow-sm overflow-hidden dark:bg-neutral-900 dark:border-none">
+                        <div class="flex justify-end mb-2 mt-2 mr-2">
 
-
+                            <a href="/contact-export/export-excel"
+                                class="inline-block px-4 py-2 text-sm font-semibold rounded bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M8 17l4 4m0 0l4-4m-4 4V3" />
+                                </svg>
+                                <span>Exporter en csv</span>
+                            </a>
+                        </div>
                         <!-- Table -->
                         <div class="flex flex-col">
                             <div class="-m-1.5 overflow-x-auto">
@@ -186,26 +195,26 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Prénom
                                                     </th>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Nom
                                                     </th>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Email Professionnel
                                                     </th>
 
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Entreprise
                                                     </th>
-                                                   
+
 
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
 
                                                         Détails
                                                     </th>

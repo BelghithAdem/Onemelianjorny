@@ -13,7 +13,7 @@
     <meta name="twitter:site" content="@preline">
     <meta name="twitter:creator" content="@preline">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta name="twitter:title" content="Eco plast">
     <meta name="twitter:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta name="twitter:image" content="https://preline.co/assets/img/og-image.png">
@@ -22,13 +22,13 @@
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Preline">
-    <meta property="og:title" content="Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS">
+    <meta property="og:title" content="Eco plast">
     <meta property="og:description"
         content="Comprehensive overview with charts, tables, and a streamlined dashboard layout for easy data visualization and analysis.">
     <meta property="og:image" content="https://preline.co/assets/img/og-image.png">
 
     <!-- Title -->
-    <title>Tailwind CSS Admin Template | Preline UI, crafted with Tailwind CSS</title>
+    <title>Eco plast</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../favicon.ico">
@@ -191,7 +191,28 @@
                             </div>
 
                             <div>
+
+
+
+
+
+
                                 <div class="inline-flex gap-x-2">
+
+
+
+                                    <!-- Export to Excel Button -->
+                                    <a href="{{ route('products.exportExcel') }}"
+                                        class="inline-block px-4 py-2 text-sm font-semibold rounded bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-2"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M8 17l4 4m0 0l4-4m-4 4V3" />
+                                        </svg>
+                                        <span>Exporter en csv</span>
+                                    </a>
+
+
 
                                     <a class="py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 focus:outline-none focus:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none dark:text-white"
                                         href="{{ route('productDashboard.create') }}">
@@ -206,6 +227,8 @@
                                     </a>
                                 </div>
                             </div>
+
+
                         </div>
                         <!-- End Header -->
 
@@ -218,23 +241,23 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Image
                                                     </th>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Nom de produit
                                                     </th>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Description
                                                     </th>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Quantité
                                                     </th>
                                                     <th scope="col"
-                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
+                                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase dark:text-white">
                                                         Action
                                                     </th>
                                                 </tr>

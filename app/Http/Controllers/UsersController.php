@@ -39,6 +39,23 @@ class UsersController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
             'role_id' => 'required|exists:roles,id',
+        ], [
+            'name.required' => 'Le nom est obligatoire.',
+            'name.string' => 'Le nom doit être une chaîne de caractères.',
+            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+
+            'email.required' => 'L\'adresse email est obligatoire.',
+            'email.string' => 'L\'adresse email doit être une chaîne de caractères.',
+            'email.email' => 'L\'adresse email doit être valide.',
+            'email.max' => 'L\'adresse email ne doit pas dépasser 255 caractères.',
+            'email.unique' => 'Cette adresse email est déjà utilisée.',
+
+            'password.required' => 'Le mot de passe est obligatoire.',
+            'password.string' => 'Le mot de passe doit être une chaîne de caractères.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+
+            'role_id.required' => 'Le rôle est obligatoire.',
+            'role_id.exists' => 'Le rôle sélectionné n\'existe pas.',
         ]);
 
         $data['password'] = Hash::make($data['password']); // Hash the password
@@ -63,6 +80,23 @@ class UsersController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8',
             'role_id' => 'required|exists:roles,id',
+        ], [
+            'name.required' => 'Le nom est obligatoire.',
+            'name.string' => 'Le nom doit être une chaîne de caractères.',
+            'name.max' => 'Le nom ne doit pas dépasser 255 caractères.',
+
+            'email.required' => 'L\'adresse email est obligatoire.',
+            'email.string' => 'L\'adresse email doit être une chaîne de caractères.',
+            'email.email' => 'L\'adresse email doit être valide.',
+            'email.max' => 'L\'adresse email ne doit pas dépasser 255 caractères.',
+            'email.unique' => 'Cette adresse email est déjà utilisée.',
+
+            'password.required' => 'Le mot de passe est obligatoire.',
+            'password.string' => 'Le mot de passe doit être une chaîne de caractères.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+
+            'role_id.required' => 'Le rôle est obligatoire.',
+            'role_id.exists' => 'Le rôle sélectionné n\'existe pas.',
         ]);
 
         if ($request->password) {
@@ -83,5 +117,37 @@ class UsersController extends Controller
         $user->delete();
 
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+    }
+
+    public function exportToExcel()
+    {
+        $products = Roles::all();
+
+        // Define the header for the CSV
+        $header = ['ID', 'Nom','Email'];
+
+        // Open a file pointer for output
+        $fileName = 'utulisateurs_export.csv';
+        $handle = fopen('php://output', 'w');
+
+        // Add the header to the CSV
+        fputcsv($handle, $header);
+
+        // Add rows for each product
+        foreach ($products as $product) {
+            fputcsv($handle, [
+                $product->id,
+                $product->name,
+                $product->email,
+            ]);
+        }
+
+        // Close the file pointer
+        fclose($handle);
+
+        // Return the file as a download
+        return response()->streamDownload(function () use ($handle) {
+            // Output the stream contents
+        }, $fileName, ['Content-Type' => 'text/csv']);
     }
 }
