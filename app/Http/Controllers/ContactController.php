@@ -12,8 +12,15 @@ class ContactController extends Controller
     {
         $query = Contact::query();
 
-        if ($request->search) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+        if ($request->has('recherche') && $request->recherche) {
+            $search = $request->recherche;
+            $query->where(function ($q) use ($search) {
+                $q->where('first_name', 'like', '%' . $search . '%')
+                  ->orWhere('last_name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%')
+                  ->orWhere('company', 'like', '%' . $search . '%')
+                  ->orWhere('details', 'like', '%' . $search . '%');
+            });
         }
 
         $contacts = $query->paginate(10);

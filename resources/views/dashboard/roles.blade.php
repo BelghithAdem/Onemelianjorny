@@ -149,14 +149,15 @@
                         </svg>
                         Dashboard
                     </a>
-                    <svg class="shrink-0 mx-2 size-4 text-gray-400 dark:text-white" xmlns="http://www.w3.org/2000/svg" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="shrink-0 mx-2 size-4 text-gray-400 dark:text-white" xmlns="http://www.w3.org/2000/svg"
+                        width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <path d="m9 18 6-6-6-6"></path>
                     </svg>
                 </li>
 
-                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-white" aria-current="page">
+                <li class="inline-flex items-center text-sm font-semibold text-gray-800 truncate dark:text-white"
+                    aria-current="page">
                     Role
                 </li>
             </ol>
@@ -190,7 +191,7 @@
 
                             <div>
                                 <div class="inline-flex gap-x-2">
-  <a href="/role-export/export-excel"
+                                    <a href="/role-export/export-excel"
                                         class="inline-block px-4 py-2 text-sm font-semibold rounded bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-2"
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -215,6 +216,24 @@
                         </div>
                         <!-- End Header -->
 
+                        <form action="{{ route('roles.index') }}" method="GET"
+                            class="mb-6 flex flex-wrap items-end gap-6 p-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-neutral-900 dark:border-none dark:text-white">
+                            <div class="w-full sm:w-auto flex-1">
+                                <label for="recherche"
+                                    class="block text-sm font-medium text-gray-700 dark:text-white">
+                                    Rechercher dans toutes les colonnes
+                                </label>
+                                <input type="text" name="recherche" id="recherche"
+                                    value="{{ request('recherche') }}" placeholder="Entrez un mot-clé"
+                                    class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-900 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder-neutral-500 dark:focus:ring-neutral-600">
+                            </div>
+                            <div class="w-full sm:w-auto">
+                                <button type="submit"
+                                    class="w-full inline-flex items-center justify-center px-6 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md shadow hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:bg-indigo-500 dark:hover:bg-indigo-600">
+                                    Rechercher
+                                </button>
+                            </div>
+                        </form>
                         <!-- Table -->
                         <div class="flex flex-col">
                             <div class="-m-1.5 overflow-x-auto">
@@ -239,7 +258,8 @@
                                                 @forelse ($roles as $product)
                                                     <tr>
 
-                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-white">
+                                                        <td
+                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-white">
                                                             {{ $product->name }}
                                                         </td>
 

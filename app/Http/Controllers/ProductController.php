@@ -15,9 +15,14 @@ class ProductController extends Controller
         public function index(Request $request)
         {
             $query = Product::query();
-
-            if ($request->search) {
-                $query->where('name', 'like', '%' . $request->search . '%');
+            if ($request->has('recherche') && $request->recherche) {
+                $search = $request->recherche;
+                $query->where(function ($q) use ($search) {
+                    $q->where('name', 'like', '%' . $search . '%')
+                      ->orWhere('price', 'like', '%' . $search . '%')
+                      ->orWhere('quantity', 'like', '%' . $search . '%')
+                      ->orWhere('description', 'like', '%' . $search . '%');
+                });
             }
 
             $products = $query->paginate(10);

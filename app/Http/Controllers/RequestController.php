@@ -11,6 +11,17 @@ class RequestController extends Controller
     public function index(Request $request)
     {
         $query = Requests::query();
+        if ($request->has('recherche') && $request->recherche) {
+            $search = $request->recherche;
+            $query->where(function ($q) use ($search) {
+                $q->where('nom', 'like', '%' . $search . '%')
+                  ->orWhere('prenom', 'like', '%' . $search . '%')
+                  ->orWhere('num_tel', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%')
+                  ->orWhere('methode_livraison', 'like', '%' . $search . '%')
+                  ->orWhere('estimation_temps', 'like', '%' . $search . '%');
+            });
+        }
 
         $requests = $query->paginate(10);
         Log::info($requests);

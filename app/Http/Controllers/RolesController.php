@@ -12,9 +12,9 @@ class RolesController extends Controller
         public function index(Request $request)
         {
             $query = Roles::query();
-
-            if ($request->search) {
-                $query->where('name', 'like', '%' . $request->search . '%');
+            if ($request->filled('recherche')) {
+                $search = $request->recherche;
+                $query->where('name', 'like', '%' . $search . '%');
             }
 
             $roles = $query->paginate(10);

@@ -12,10 +12,10 @@ class PartnerController extends Controller
     {
         $query = Partner::query();
 
-        if ($request->search) {
-            $query->where('name', 'like', '%' . $request->search . '%');
+        if ($request->filled('recherche')) {
+            $search = $request->recherche;
+            $query->where('name', 'like', '%' . $search . '%');
         }
-
         $partners = $query->paginate(10);
 
         return view('dashboard.partners', compact('partners'));

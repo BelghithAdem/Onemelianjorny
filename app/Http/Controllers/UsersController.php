@@ -14,9 +14,13 @@ class UsersController extends Controller
     {
         $query = User::query();
 
-        if ($request->search) {
-            $query->where('name', 'like', '%' . $request->search . '%')
-                  ->orWhere('email', 'like', '%' . $request->search . '%');
+        if ($request->has('recherche') && $request->recherche) {
+            $search = $request->recherche;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                  ->orWhere('email', 'like', '%' . $search . '%');
+
+            });
         }
 
         $users = $query->paginate(10);
@@ -121,7 +125,7 @@ class UsersController extends Controller
 
     public function exportToExcel()
     {
-        $products = Roles::all();
+        $products = User::all();
 
         // Define the header for the CSV
         $header = ['ID', 'Nom','Email'];
